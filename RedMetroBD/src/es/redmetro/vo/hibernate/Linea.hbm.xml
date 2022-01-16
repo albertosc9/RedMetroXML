@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="es.redmetro.vo">
+    <class name="Linea" table="T_LINEA">
+        <id name="codigoLinea" type="java.lang.Integer" column="cod_linea">
+            <generator class="increment" />
+        </id>
+	
+	<bag name="lineasEstacion" table="T_LINEA_ESTACION" inverse="false" 
+        	 cascade="save-update" lazy="true" fetch="select">
+            <key>
+                <column name="cod_linea" not-null="true" />
+            </key>
+            <one-to-many class="LineaEstacion" />
+        </bag>	
+        
+	<property name="nombreCorto" column="nombre_corto" type="java.lang.String" length="50"/>
+	<property name="nombreLargo" column="nombre_largo" type="java.lang.String" length="100"/>
+	<property name="fechaInaguracion" column="fecha_inaguracion" type="java.util.Date"/>
+	<property name="Km" column="km" type="float"/>
+	
+	 
+      <many-to-one name="color" class="Color" fetch="select" cascade="all" unique="true">
+      	<column name="cod_color" not-null="true"/>
+      </many-to-one>
+ 
+    </class>
+</hibernate-mapping>

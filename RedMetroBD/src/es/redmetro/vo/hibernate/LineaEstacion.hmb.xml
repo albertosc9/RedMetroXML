@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="es.redmetro.vo">
+ 
+   <!--  LINEA ESTACIÓN -->
+    <class name="LineaEstacion" table="T_LINEA_ESTACION"  dynamic-insert="true" dynamic-update="true">
+        <composite-id >
+        	<key-many-to-one name="linea" class="Linea" column="cod_linea" />
+        	<key-many-to-one name="estacion" class="Estacion" column="cod_estacion" />
+    	</composite-id>
+    	
+        <property name="ordenM" column="orden" type="int" not-null="true"/>
+        
+    </class>
+
+</hibernate-mapping>
