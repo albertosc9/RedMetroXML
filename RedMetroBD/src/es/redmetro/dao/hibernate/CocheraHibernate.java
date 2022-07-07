@@ -78,6 +78,9 @@ public class CocheraHibernate implements IRedMetro<Cochera>{
 			tx.commit();
 			
 			sesion.close();
+		}else 
+		{
+			tx.Rollback();
 		}
 	}
 
